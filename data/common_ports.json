@@ -1,0 +1,273 @@
+{
+    "tcp": {
+        "21": {
+            "name": "FTP",
+            "risk": "high",
+            "description": "Unencrypted file transfer protocol"
+        },
+        "22": {
+            "name": "SSH",
+            "risk": "medium",
+            "description": "Secure remote shell access"
+        },
+        "23": {
+            "name": "Telnet",
+            "risk": "critical",
+            "description": "Unencrypted remote terminal access"
+        },
+        "25": {
+            "name": "SMTP",
+            "risk": "medium",
+            "description": "Mail transfer protocol"
+        },
+        "53": {
+            "name": "DNS",
+            "risk": "low",
+            "description": "Domain name resolution service"
+        },
+        "80": {
+            "name": "HTTP",
+            "risk": "medium",
+            "description": "Unencrypted web traffic"
+        },
+        "110": {
+            "name": "POP3",
+            "risk": "medium",
+            "description": "Mail retrieval protocol"
+        },
+        "143": {
+            "name": "IMAP",
+            "risk": "medium",
+            "description": "Mail access protocol"
+        },
+        "389": {
+            "name": "LDAP",
+            "risk": "high",
+            "description": "Directory service (unencrypted)"
+        },
+        "443": {
+            "name": "HTTPS",
+            "risk": "low",
+            "description": "Encrypted web traffic"
+        },
+        "445": {
+            "name": "SMB",
+            "risk": "high",
+            "description": "Windows file sharing"
+        },
+        "587": {
+            "name": "SMTP-TLS",
+            "risk": "low",
+            "description": "Mail submission over TLS"
+        },
+        "902": {
+            "name": "VMware-Auth",
+            "risk": "medium",
+            "description": "VMware authentication service"
+        },
+        "1080": {
+            "name": "SOCKS",
+            "risk": "medium",
+            "description": "SOCKS proxy service"
+        },
+        "1433": {
+            "name": "MSSQL",
+            "risk": "high",
+            "description": "Microsoft SQL Server database"
+        },
+        "1521": {
+            "name": "OracleDB",
+            "risk": "high",
+            "description": "Oracle database listener"
+        },
+        "2049": {
+            "name": "NFS",
+            "risk": "high",
+            "description": "Network File System"
+        },
+        "2375": {
+            "name": "Docker",
+            "risk": "critical",
+            "description": "Docker API exposed without TLS"
+        },
+        "27017": {
+            "name": "MongoDB",
+            "risk": "high",
+            "description": "MongoDB database"
+        },
+        "3306": {
+            "name": "MySQL",
+            "risk": "high",
+            "description": "MySQL database"
+        },
+        "3389": {
+            "name": "RDP",
+            "risk": "high",
+            "description": "Remote Desktop Protocol"
+        },
+        "5432": {
+            "name": "PostgreSQL",
+            "risk": "high",
+            "description": "PostgreSQL database"
+        },
+        "5900": {
+            "name": "VNC",
+            "risk": "high",
+            "description": "Unencrypted remote desktop"
+        },
+        "6379": {
+            "name": "Redis",
+            "risk": "high",
+            "description": "In-memory key-value store"
+        },
+        "8080": {
+            "name": "HTTP-Proxy",
+            "risk": "medium",
+            "description": "Alternate HTTP or proxy"
+        },
+        "8443": {
+            "name": "HTTPS-Alt",
+            "risk": "low",
+            "description": "Alternative HTTPS port"
+        }
+    },
+    "udp": {
+        "53": {
+            "name": "DNS",
+            "risk": "medium",
+            "description": "Domain name resolution"
+        },
+        "67": {
+            "name": "DHCP-Server",
+            "risk": "low",
+            "description": "DHCP address assignment"
+        },
+        "68": {
+            "name": "DHCP-Client",
+            "risk": "low",
+            "description": "DHCP client port"
+        },
+        "69": {
+            "name": "TFTP",
+            "risk": "high",
+            "description": "Trivial file transfer protocol without authentication"
+        },
+        "123": {
+            "name": "NTP",
+            "risk": "medium",
+            "description": "Network Time Protocol"
+        },
+        "137": {
+            "name": "NetBIOS-NS",
+            "risk": "high",
+            "description": "NetBIOS name service"
+        },
+        "138": {
+            "name": "NetBIOS-DGM",
+            "risk": "high",
+            "description": "NetBIOS datagram service"
+        },
+        "161": {
+            "name": "SNMP",
+            "risk": "high",
+            "description": "Network monitoring (default community strings)"
+        },
+        "162": {
+            "name": "SNMP-Trap",
+            "risk": "medium",
+            "description": "SNMP trap receiver"
+        },
+        "500": {
+            "name": "ISAKMP",
+            "risk": "medium",
+            "description": "IPsec VPN negotiation"
+        },
+        "514": {
+            "name": "Syslog",
+            "risk": "medium",
+            "description": "Remote logging service"
+        },
+        "520": {
+            "name": "RIP",
+            "risk": "medium",
+            "description": "Routing Information Protocol"
+        },
+        "1900": {
+            "name": "SSDP",
+            "risk": "medium",
+            "description": "UPnP discovery service"
+        }
+    },
+    "malware": {
+        "4444": {
+            "name": "Metasploit",
+            "risk": "critical",
+            "description": "Default Metasploit payload handler"
+        },
+        "5555": {
+            "name": "Android-ADB",
+            "risk": "critical",
+            "description": "ADB over network; abused by botnets"
+        },
+        "6667": {
+            "name": "IRC-Botnet",
+            "risk": "critical",
+            "description": "IRC command and control channel"
+        },
+        "6697": {
+            "name": "IRC-SSL-Botnet",
+            "risk": "critical",
+            "description": "Encrypted IRC botnet C2"
+        },
+        "6969": {
+            "name": "GT-Bots",
+            "risk": "critical",
+            "description": "Malware botnet communication"
+        },
+        "7070": {
+            "name": "ZeroAccess",
+            "risk": "critical",
+            "description": "ZeroAccess P2P botnet port"
+        },
+        "8081": {
+            "name": "Conficker",
+            "risk": "critical",
+            "description": "Conficker worm HTTP server"
+        },
+        "9001": {
+            "name": "Tor-Relay",
+            "risk": "high",
+            "description": "Used by Tor; often abused for malware C2"
+        },
+        "10000": {
+            "name": "NetBus",
+            "risk": "critical",
+            "description": "Remote control trojan"
+        },
+        "11371": {
+            "name": "PGP-Keyserver",
+            "risk": "medium",
+            "description": "Used for key distribution, also abused"
+        },
+        "13568": {
+            "name": "Rbot",
+            "risk": "critical",
+            "description": "Rbot/Spybot worm communications"
+        },
+        "16000": {
+            "name": "DarkComet",
+            "risk": "critical",
+            "description": "Remote Access Trojan C2"
+        },
+        "27382": {
+            "name": "Sub7",
+            "risk": "critical",
+            "description": "Remote control trojan port"
+        },
+        "31337": {
+            "name": "BackOrifice",
+            "risk": "critical",
+            "description": "Infamous backdoor trojan"
+        }
+    }
+}
