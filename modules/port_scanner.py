@@ -1,6 +1,7 @@
 import socket
 import json
 import os
+import concurrent.futures 
 
 class PortScanner:
     def __init__(self, target, timeout=1):
@@ -27,19 +28,19 @@ class PortScanner:
     
     def scan_port(self, port):
         """Escanea un puerto"""
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(self.timeout)
-        result = sock.connect_ex((self.target_ip, port))
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #AF_INET para IPv4, SOCK_STREAM para TCP
+        sock.settimeout(self.timeout) #tiempo de espera del socket
+        result = sock.connect_ex((self.target_ip, port)) #connect_ex devuelve 0 si el puerto está abierto
         sock.close()
         
-        if result == 0:
+        if result == 0: #si el puerto está abierto
             port_info = self.ports_db.get(str(port), {
                 'name': 'unknown',
                 'risk': 'unknown',
                 'description': 'Unknown service'
             })
             
-            return {
+            return { #retorna un diccionario con la información del puerto
                 'port': port,
                 'state': 'open',
                 'service': port_info['name'],
@@ -48,3 +49,42 @@ class PortScanner:
             }
         else:
             return None
+    
+    def scan_ports(self, ports, max_threads=100):
+        """
+        Escanea múltiples puertos usando threading
+        
+        Args:
+            ports: Lista de puertos a escanear
+            max_threads: Número máximo de threads concurrentes
+            
+        Returns:
+            Lista
+        """
+        results = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
+            future_to_port = {executor.submit(self.scan_port, port): port for port in ports}
+            for future in concurrent.futures.as_completed(future_to_port):
+                result = future.result()
+                if result:  # Solo agregar si el puerto está abierto
+                    results.append(result)
+        
+        return sorted(results, key=lambda x: x['port'])
+    
+    def quick_scan(self):
+        """Escaneo rápido de puertos comunes"""
+        common_ports = [21, 22, 23, 25, 80, 443, 445, 3306, 3389, 8080]
+        return self.scan_ports(common_ports)
+
+    
+    def full_scan(self):
+        """Escaneo completo de puertos"""
+        ports = range(1, 65535)
+        return self.scan_ports(ports)
+
+    def scan_range(self, start, end):
+        """Escaneo de un rango de puertos"""
+        ports = range(start, end + 1)
+        return self.scan_ports(ports)
+    
+    
