@@ -76,7 +76,6 @@ class PortScanner:
         common_ports = [21, 22, 23, 25, 80, 443, 445, 3306, 3389, 8080]
         return self.scan_ports(common_ports)
 
-    
     def full_scan(self):
         """Escaneo completo de puertos"""
         ports = range(1, 65535)
@@ -86,5 +85,4 @@ class PortScanner:
         """Escaneo de un rango de puertos"""
         ports = range(start, end + 1)
         return self.scan_ports(ports)
-    
     

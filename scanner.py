@@ -6,11 +6,21 @@ from utils.colors import Colors, print_banner
 
 def main():
     print_banner()
-    
+    #principal parser
     parser = argparse.ArgumentParser(description='AI-Powered Port Scanner')
-    parser.add_argument('target', help='Target IP or hostname')
-    parser.add_argument('--api-key', help='Gemini API key')
-    parser.add_argument('--quick', action='store_true', help='Quick scan (common ports only)')
+    #subparser
+    subparsers = parser.add_subparsers(dest='command')
+    
+    #parser para el escaneo
+    scan_parser = subparsers.add_parser('scan', help='Scan ports on a target')
+
+    scan_parser.add_argument('-t', '--target', required=True, help='Target IP or hostname')
+    scan_parser.add_argument('-k', '--api-key', help='Gemini API key')
+    scan_parser.add_argument('-q', '--quick', action='store_true', help='Quick scan (common ports only)')
+    scan_parser.add_argument('-r', '--range', type=int, help='Port range to scan (e.g., 1-100)')
+    scan_parser.add_argument('-f', '--full', action='store_true', help='Full scan (all ports)')
+    scan_parser.add_argument('-s', '--scan', type=int, help='Scan one port')
+    scan_parser.add_argument('-i', '--resolve-ip', action='store_true', help='Resolve IP address')
     
     args = parser.parse_args()
     
