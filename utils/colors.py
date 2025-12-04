@@ -28,7 +28,7 @@ def print_banner():
     banner = f"""
 {Colors.CYAN}{Colors.BOLD}
 ╔═══════════════════════════════════════════════════╗
-║            AI-Powered Port Scanner v1.0           ║
+║            AI-Powered Port Scanner v1.1           ║
 ║         Network Reconnaissance + AI Analysis      ║
 ║                        By Kino                    ║
 ╚═══════════════════════════════════════════════════╝
