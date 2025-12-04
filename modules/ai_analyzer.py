@@ -62,21 +62,24 @@ Rules:
         
         try:
             response = self.model.generate_content(prompt)
-            return response.text
+            text = response.text.strip()
+            
+            # Limpiar markdown si existe
+            if text.startswith('```json'):
+                text = text[7:]
+            if text.endswith('```'):
+                text = text[:-3]
+            
+            return json.loads(text.strip())
+            
         except Exception as e:
-            return f"Error analyzing results: {str(e)}"
-        
-        text = response.text.strip()
-        if text.startswith('```json'):
-            text = text[7:-3].strip()
-        elif text.startswith('```'):
-            text = text[3:-3].strip()
-        
-        try:
-            analysis = json.loads(text)
-            return analysis
-        except json.JSONDecodeError as e:
-            print(f"Error parsing AI response: {e}")
-            print(f"Raw response: {text}")
-            return None
+            return {
+                "risk_score": 0,
+                "severity": "error",
+                "critical_findings": [],
+                "attack_vectors": [],
+                "immediate_actions": [f"Error analyzing results: {str(e)}"],
+                "reconnaissance_notes": "Analysis failed."
+            }
+
 

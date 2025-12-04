@@ -50,7 +50,7 @@ class PortScanner:
         else:
             return None
     
-    def scan_ports(self, ports, max_threads=100):
+    def scan_ports(self, ports, max_threads=300):
         """
         Escanea múltiples puertos usando threading
         
